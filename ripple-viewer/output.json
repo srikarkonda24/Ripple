@@ -1,0 +1,398 @@
+{
+  "nodes": [
+    {
+      "id": "RootLayout",
+      "file": "app/layout.tsx"
+    },
+    {
+      "id": "Home",
+      "file": "app/page.tsx"
+    },
+    {
+      "id": "AnimateIn",
+      "file": "components/AnimateIn.tsx"
+    },
+    {
+      "id": "Button",
+      "file": "components/Button.tsx"
+    },
+    {
+      "id": "getNodeStyle",
+      "file": "components/CodebaseGraph.tsx"
+    },
+    {
+      "id": "CodebaseGraph",
+      "file": "components/CodebaseGraph.tsx"
+    },
+    {
+      "id": "Cta",
+      "file": "components/Cta.tsx"
+    },
+    {
+      "id": "SectionLabel",
+      "file": "components/Hero.tsx"
+    },
+    {
+      "id": "Hero",
+      "file": "components/Hero.tsx"
+    },
+    {
+      "id": "HowItWorks",
+      "file": "components/HowItWorks.tsx"
+    },
+    {
+      "id": "Integrations",
+      "file": "components/Integrations.tsx"
+    },
+    {
+      "id": "LiveIntelligenceDemo",
+      "file": "components/LiveIntelligenceDemo.tsx"
+    },
+    {
+      "id": "LiveMapFeed",
+      "file": "components/LiveMapFeed.tsx"
+    },
+    {
+      "id": "Nav",
+      "file": "components/Nav.tsx"
+    },
+    {
+      "id": "Problem",
+      "file": "components/Problem.tsx"
+    },
+    {
+      "id": "SectionDivider",
+      "file": "components/SectionDivider.tsx"
+    },
+    {
+      "id": "useInView",
+      "file": "hooks/useInView.ts"
+    },
+    {
+      "id": "sortFindings",
+      "file": "features/scans/index.ts"
+    },
+    {
+      "id": "deduplicateFindings",
+      "file": "features/scans/index.ts"
+    },
+    {
+      "id": "calculateShouldBlock",
+      "file": "features/scans/index.ts"
+    },
+    {
+      "id": "scanDiff",
+      "file": "features/scans/index.ts"
+    },
+    {
+      "id": "classifyFile",
+      "file": "features/scans/preProcessor.ts"
+    },
+    {
+      "id": "parseDiff",
+      "file": "features/scans/preProcessor.ts"
+    },
+    {
+      "id": "isCommentLine",
+      "file": "features/scans/preProcessor.ts"
+    },
+    {
+      "id": "extractLines",
+      "file": "features/scans/preProcessor.ts"
+    },
+    {
+      "id": "preprocessDiff",
+      "file": "features/scans/preProcessor.ts"
+    },
+    {
+      "id": "getInstallationClient",
+      "file": "server/github/client.ts"
+    },
+    {
+      "id": "getPullRequestDiff",
+      "file": "server/github/client.ts"
+    },
+    {
+      "id": "severityEmoji",
+      "file": "server/github/comments.ts"
+    },
+    {
+      "id": "severityLabel",
+      "file": "server/github/comments.ts"
+    },
+    {
+      "id": "formatFinding",
+      "file": "server/github/comments.ts"
+    },
+    {
+      "id": "buildFindingsComment",
+      "file": "server/github/comments.ts"
+    },
+    {
+      "id": "buildCleanComment",
+      "file": "server/github/comments.ts"
+    },
+    {
+      "id": "findExistingComment",
+      "file": "server/github/comments.ts"
+    },
+    {
+      "id": "postScanComment",
+      "file": "server/github/comments.ts"
+    },
+    {
+      "id": "POST",
+      "file": "app/api/webhook/route.ts"
+    },
+    {
+      "id": "verifyWebhookSignature",
+      "file": "app/api/webhook/route.ts"
+    },
+    {
+      "id": "looksLikePlaceholder",
+      "file": "features/scans/secrets/apiKeys/index.ts"
+    },
+    {
+      "id": "isEnvironmentVariableReference",
+      "file": "features/scans/secrets/apiKeys/index.ts"
+    },
+    {
+      "id": "isDangerousEnvFallback",
+      "file": "features/scans/secrets/apiKeys/index.ts"
+    },
+    {
+      "id": "downgradeSeverity",
+      "file": "features/scans/secrets/apiKeys/index.ts"
+    },
+    {
+      "id": "adjustSeverity",
+      "file": "features/scans/secrets/apiKeys/index.ts"
+    },
+    {
+      "id": "scanLine",
+      "file": "features/scans/secrets/apiKeys/index.ts"
+    },
+    {
+      "id": "scanApiKeys",
+      "file": "features/scans/secrets/apiKeys/index.ts"
+    }
+  ],
+  "edges": [
+    {
+      "from": "RootLayout",
+      "to": "Nav"
+    },
+    {
+      "from": "Home",
+      "to": "Hero"
+    },
+    {
+      "from": "Home",
+      "to": "SectionDivider"
+    },
+    {
+      "from": "Home",
+      "to": "Problem"
+    },
+    {
+      "from": "Home",
+      "to": "HowItWorks"
+    },
+    {
+      "from": "Home",
+      "to": "LiveIntelligenceDemo"
+    },
+    {
+      "from": "Home",
+      "to": "Integrations"
+    },
+    {
+      "from": "Home",
+      "to": "Cta"
+    },
+    {
+      "from": "AnimateIn",
+      "to": "useInView"
+    },
+    {
+      "from": "CodebaseGraph",
+      "to": "getNodeStyle"
+    },
+    {
+      "from": "Cta",
+      "to": "AnimateIn"
+    },
+    {
+      "from": "Cta",
+      "to": "Button"
+    },
+    {
+      "from": "Hero",
+      "to": "SectionLabel"
+    },
+    {
+      "from": "Hero",
+      "to": "Button"
+    },
+    {
+      "from": "HowItWorks",
+      "to": "useInView"
+    },
+    {
+      "from": "HowItWorks",
+      "to": "SectionLabel"
+    },
+    {
+      "from": "HowItWorks",
+      "to": "AnimateIn"
+    },
+    {
+      "from": "Integrations",
+      "to": "useInView"
+    },
+    {
+      "from": "Integrations",
+      "to": "SectionLabel"
+    },
+    {
+      "from": "Integrations",
+      "to": "AnimateIn"
+    },
+    {
+      "from": "LiveIntelligenceDemo",
+      "to": "useInView"
+    },
+    {
+      "from": "LiveIntelligenceDemo",
+      "to": "SectionLabel"
+    },
+    {
+      "from": "LiveIntelligenceDemo",
+      "to": "CodebaseGraph"
+    },
+    {
+      "from": "LiveIntelligenceDemo",
+      "to": "LiveMapFeed"
+    },
+    {
+      "from": "LiveIntelligenceDemo",
+      "to": "AnimateIn"
+    },
+    {
+      "from": "Problem",
+      "to": "SectionLabel"
+    },
+    {
+      "from": "Problem",
+      "to": "AnimateIn"
+    },
+    {
+      "from": "SectionDivider",
+      "to": "useInView"
+    },
+    {
+      "from": "scanDiff",
+      "to": "preprocessDiff"
+    },
+    {
+      "from": "scanDiff",
+      "to": "scanApiKeys"
+    },
+    {
+      "from": "scanDiff",
+      "to": "deduplicateFindings"
+    },
+    {
+      "from": "scanDiff",
+      "to": "sortFindings"
+    },
+    {
+      "from": "scanDiff",
+      "to": "calculateShouldBlock"
+    },
+    {
+      "from": "extractLines",
+      "to": "classifyFile"
+    },
+    {
+      "from": "extractLines",
+      "to": "isCommentLine"
+    },
+    {
+      "from": "preprocessDiff",
+      "to": "parseDiff"
+    },
+    {
+      "from": "preprocessDiff",
+      "to": "extractLines"
+    },
+    {
+      "from": "getPullRequestDiff",
+      "to": "getInstallationClient"
+    },
+    {
+      "from": "formatFinding",
+      "to": "severityEmoji"
+    },
+    {
+      "from": "formatFinding",
+      "to": "severityLabel"
+    },
+    {
+      "from": "postScanComment",
+      "to": "buildFindingsComment"
+    },
+    {
+      "from": "postScanComment",
+      "to": "buildCleanComment"
+    },
+    {
+      "from": "postScanComment",
+      "to": "getInstallationClient"
+    },
+    {
+      "from": "postScanComment",
+      "to": "findExistingComment"
+    },
+    {
+      "from": "POST",
+      "to": "verifyWebhookSignature"
+    },
+    {
+      "from": "POST",
+      "to": "getPullRequestDiff"
+    },
+    {
+      "from": "POST",
+      "to": "scanDiff"
+    },
+    {
+      "from": "POST",
+      "to": "postScanComment"
+    },
+    {
+      "from": "adjustSeverity",
+      "to": "downgradeSeverity"
+    },
+    {
+      "from": "scanLine",
+      "to": "isEnvironmentVariableReference"
+    },
+    {
+      "from": "scanLine",
+      "to": "isDangerousEnvFallback"
+    },
+    {
+      "from": "scanLine",
+      "to": "looksLikePlaceholder"
+    },
+    {
+      "from": "scanLine",
+      "to": "adjustSeverity"
+    },
+    {
+      "from": "scanApiKeys",
+      "to": "scanLine"
+    }
+  ]
+}

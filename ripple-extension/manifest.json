@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Ripple Memory",
+  "version": "0.1.0",
+  "description": "Captures Claude.ai conversations for Ripple memory",
+  "permissions": ["activeTab", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://claude.ai/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Ripple Memory"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["messages.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

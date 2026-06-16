@@ -1,0 +1,261 @@
+<!-- Popup UI for viewing captured Claude.ai messages and copying them as JSON. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ripple Memory</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #0a0a0a;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 13px;
+        line-height: 1.5;
+        min-width: 320px;
+        max-width: 360px;
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-bottom: 4px;
+      }
+
+      .subtitle {
+        color: #888888;
+        font-size: 12px;
+        margin-bottom: 16px;
+      }
+
+      .count {
+        background-color: #141414;
+        border: 1px solid #222222;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        padding: 10px 12px;
+      }
+
+      .count-label {
+        color: #888888;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .count-value {
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 2px;
+      }
+
+      .preview-heading {
+        color: #888888;
+        font-size: 11px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .preview-list {
+        background-color: #141414;
+        border: 1px solid #222222;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        max-height: 180px;
+        overflow-y: auto;
+        padding: 8px;
+      }
+
+      .preview-item {
+        border-bottom: 1px solid #222222;
+        padding: 8px 4px;
+      }
+
+      .preview-item:last-child {
+        border-bottom: none;
+      }
+
+      .preview-role {
+        color: #aaaaaa;
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        text-transform: capitalize;
+      }
+
+      .preview-role.user {
+        color: #7eb8ff;
+      }
+
+      .preview-role.assistant {
+        color: #a8d5a2;
+      }
+
+      .preview-text {
+        color: #cccccc;
+        font-size: 12px;
+        word-break: break-word;
+      }
+
+      .empty-state {
+        color: #666666;
+        font-size: 12px;
+        padding: 12px 4px;
+        text-align: center;
+      }
+
+      .view-all-button {
+        margin-bottom: 16px;
+        width: 100%;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      button {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        color: #0a0a0a;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 14px;
+        width: 100%;
+      }
+
+      button:hover {
+        background-color: #e8e8e8;
+      }
+
+      button:active {
+        background-color: #d0d0d0;
+      }
+
+      button.secondary {
+        background-color: #1a1a1a;
+        border: 1px solid #333333;
+        color: #ffffff;
+      }
+
+      button.secondary:hover {
+        background-color: #222222;
+      }
+
+      .status {
+        color: #888888;
+        font-size: 11px;
+        margin-top: 10px;
+        min-height: 16px;
+        text-align: center;
+      }
+
+      .status.error {
+        color: #ff6b6b;
+      }
+
+      .status.success {
+        color: #a8d5a2;
+      }
+
+      .paste-section {
+        margin-top: 8px;
+      }
+
+      .paste-section.hidden {
+        display: none;
+      }
+
+      .paste-section textarea {
+        background-color: #141414;
+        border: 1px solid #222222;
+        border-radius: 8px;
+        color: #ffffff;
+        font-family: inherit;
+        font-size: 12px;
+        height: 120px;
+        line-height: 1.5;
+        margin-bottom: 8px;
+        padding: 10px;
+        resize: vertical;
+        width: 100%;
+      }
+
+      .paste-section textarea::placeholder {
+        color: #666666;
+      }
+
+      .paste-section textarea:focus {
+        border-color: #444444;
+        outline: none;
+      }
+
+      .import-status {
+        color: #888888;
+        font-size: 11px;
+        margin-top: 8px;
+        min-height: 16px;
+        text-align: center;
+      }
+
+      .import-status.success {
+        color: #a8d5a2;
+      }
+
+      .import-status.error {
+        color: #ff6b6b;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ripple Memory</h1>
+    <p class="subtitle">Claude.ai conversation capture</p>
+
+    <div class="count">
+      <div class="count-label">Messages captured</div>
+      <div class="count-value" id="message-count">0</div>
+    </div>
+
+    <div class="preview-heading">Last 3 messages</div>
+    <div class="preview-list" id="preview-list">
+      <div class="empty-state">No messages captured yet</div>
+    </div>
+
+    <button type="button" id="view-all-button" class="secondary view-all-button">
+      View All Messages
+    </button>
+
+    <div class="actions">
+      <button type="button" id="copy-button">Copy to clipboard</button>
+      <button type="button" id="rescan-button" class="secondary">Re-scan page</button>
+      <button type="button" id="paste-toggle-button" class="secondary">
+        Paste Conversation
+      </button>
+    </div>
+
+    <div id="paste-section" class="paste-section hidden">
+      <textarea
+        id="paste-textarea"
+        placeholder="Paste full conversation here..."
+      ></textarea>
+      <button type="button" id="import-button">Import</button>
+      <p class="import-status" id="import-status"></p>
+    </div>
+
+    <p class="status" id="status"></p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

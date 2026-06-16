@@ -1,0 +1,71 @@
+FOLDER RULES — for ripple-app (Vite + React + TypeScript):
+/src/components → UI only, zero business logic
+/src/features   → business logic by domain (when it emerges)
+/src/server     → API clients, external service calls only
+/src/lib        → pure shared utilities only
+/src/hooks      → React hooks only
+/src/types      → TypeScript types only
+/src/config     → constants and environment variables
+
+ARCHITECTURE RULES:
+- UI never contains business logic
+- UI never makes direct API calls — goes through /src/server
+- All business logic lives in /src/features
+- Check /src/lib before creating any utility
+- Never duplicate logic
+- Prefer editing existing files over creating new ones
+- Split any file over 200 lines
+- Every new file has a single clearly stated purpose in a comment at the top
+- If a file imports from more than two other modules, question whether it's doing too much
+
+SECURITY RULES:
+- Never hardcode secrets, keys, or tokens
+- Use environment variables (Vite: import.meta.env) for any config that varies by environment
+- Validate any external/user input
+- Never expose internal errors to the UI — show safe messages, log details to console
+
+CODE QUALITY RULES:
+- TypeScript strict mode always, never use any
+- Every function has typed inputs and outputs
+- Every error is caught and handled — nothing fails silently
+- Name things clearly, no abbreviations
+- Every function does one thing only
+- Code must be readable by a beginner
+
+COMMENTING RULES:
+- Every file has a comment at the top explaining its purpose in one sentence
+- Every function has a comment above it explaining what it does in plain English
+- Explain WHY decisions were made, not just what the code does
+- Comments must be understandable by a beginner
+- Never write obvious comments like "// loop through array"
+
+ARCHITECTURE ADDITIONS:
+- Prefer simple code over reusable abstractions
+- Do not abstract until duplication exists twice
+- Build the simplest thing that works first, then refactor if needed
+- If you cannot explain why an abstraction exists in one sentence, it should not exist
+
+MAINTAINABILITY RULES:
+- Delete dead code immediately
+- If editing a file over 300 lines, evaluate splitting it first
+- No TODO comments without a linked issue
+- Optimize for future changeability over cleverness
+
+ANTI-OVERENGINEERING RULES:
+- No classes unless explicitly justified
+- No generic abstractions without 2+ real use cases
+- No manager, handler, or wrapper layers without clear justification
+- Prefer explicit code over magical patterns
+
+UI QUALITY RULES:
+- Never split headlines into individual word spans for animation — animate whole elements only
+- Always confirm button variants have explicit background and text color classes applied
+- After building any UI, reason through whether anything could overlap or clip before finishing
+- Never use position absolute without confirming child elements cannot overflow their container
+- Responsive check required after every UI build: does this work at 375px mobile and 1440px desktop
+- If animation involves individual elements like spans or list items, confirm text flow is not broken by the split
+- After any fix, run through this checklist:
+  - Headline renders as one clean block
+  - All buttons are visibly styled
+  - Nothing overlaps or clips
+  - All sections stack correctly on mobile

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ripple": {
+      "command": "node",
+      "args": ["c:\\Users\\srika\\Desktop\\Ripple\\ripple-mcp\\dist\\index.js"]
+    }
+  }
+}

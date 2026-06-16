@@ -1,0 +1,202 @@
+<!-- Full-page view of all captured Claude.ai messages stored by Ripple Memory. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ripple Memory — Full Conversation</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #0a0a0a;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .page-header {
+        background-color: #0a0a0a;
+        border-bottom: 1px solid #222222;
+        padding: 20px 24px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .header-inner {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 800px;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      #copy-all-button {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        color: #0a0a0a;
+        cursor: pointer;
+        flex-shrink: 0;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 16px;
+      }
+
+      #copy-all-button:hover {
+        background-color: #e8e8e8;
+      }
+
+      .page-body {
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 32px 24px 64px;
+        width: 100%;
+      }
+
+      .empty-state {
+        color: #666666;
+        font-size: 15px;
+        padding: 48px 0;
+        text-align: center;
+      }
+
+      .message-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .message-item {
+        border-bottom: 1px solid #222222;
+        padding: 24px 0;
+      }
+
+      .message-item:last-child {
+        border-bottom: none;
+      }
+
+      .message-meta {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .role-badge {
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 4px 10px;
+        text-transform: uppercase;
+      }
+
+      .role-badge.user {
+        background-color: #2d1f4e;
+        color: #c4a8ff;
+      }
+
+      .role-badge.assistant {
+        background-color: #1a2e1a;
+        color: #a8d5a2;
+      }
+
+      .role-badge.system {
+        background-color: #1a1a1a;
+        color: #888888;
+      }
+
+      .message-time {
+        color: #666666;
+        font-size: 13px;
+      }
+
+      .message-content {
+        color: #e8e8e8;
+        font-size: 15px;
+        line-height: 1.7;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .session-divider {
+        align-items: center;
+        border-bottom: none;
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+      }
+
+      .session-divider-label {
+        color: #555555;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .copy-status {
+        color: #888888;
+        font-size: 12px;
+        margin-left: 12px;
+      }
+
+      .copy-status.success {
+        color: #a8d5a2;
+      }
+
+      .copy-status.error {
+        color: #ff6b6b;
+      }
+
+      @media (max-width: 600px) {
+        .header-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        h1 {
+          font-size: 18px;
+        }
+
+        .page-body {
+          padding: 24px 16px 48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-inner">
+        <h1>Ripple Memory — Full Conversation</h1>
+        <div>
+          <button type="button" id="copy-all-button">Copy All as JSON</button>
+          <span class="copy-status" id="copy-status"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-body">
+      <div class="message-list" id="message-list">
+        <div class="empty-state">Loading messages…</div>
+      </div>
+    </main>
+
+    <script src="messages.js"></script>
+  </body>
+</html>

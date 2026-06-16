@@ -1,0 +1,158 @@
+{
+  "nodes": [
+    {
+      "id": "errorMessage",
+      "file": "index.ts"
+    },
+    {
+      "id": "toolError",
+      "file": "index.ts"
+    },
+    {
+      "id": "toolSuccess",
+      "file": "index.ts"
+    },
+    {
+      "id": "main",
+      "file": "index.ts"
+    },
+    {
+      "id": "failStartup",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "isRecord",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "isNonEmptyString",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "isStringArray",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "parseGraphNode",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "parseGraphEdge",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "parseGraphData",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "parseConcept",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "parseConceptEdge",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "parseConceptData",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "readJsonFile",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "loadData",
+      "file": "data/loadData.ts"
+    },
+    {
+      "id": "buildNodeFileMap",
+      "file": "tools/getConceptContext.ts"
+    },
+    {
+      "id": "resolveFiles",
+      "file": "tools/getConceptContext.ts"
+    },
+    {
+      "id": "conceptMatchesSearch",
+      "file": "tools/getConceptContext.ts"
+    },
+    {
+      "id": "validateSearchTerm",
+      "file": "tools/getConceptContext.ts"
+    },
+    {
+      "id": "getConceptContext",
+      "file": "tools/getConceptContext.ts"
+    },
+    {
+      "id": "listConcepts",
+      "file": "tools/listConcepts.ts"
+    }
+  ],
+  "edges": [
+    {
+      "from": "parseGraphNode",
+      "to": "isRecord"
+    },
+    {
+      "from": "parseGraphNode",
+      "to": "isNonEmptyString"
+    },
+    {
+      "from": "parseGraphEdge",
+      "to": "isRecord"
+    },
+    {
+      "from": "parseGraphEdge",
+      "to": "isNonEmptyString"
+    },
+    {
+      "from": "parseGraphData",
+      "to": "isRecord"
+    },
+    {
+      "from": "parseConcept",
+      "to": "isRecord"
+    },
+    {
+      "from": "parseConcept",
+      "to": "isNonEmptyString"
+    },
+    {
+      "from": "parseConcept",
+      "to": "isStringArray"
+    },
+    {
+      "from": "parseConceptEdge",
+      "to": "isRecord"
+    },
+    {
+      "from": "parseConceptEdge",
+      "to": "isNonEmptyString"
+    },
+    {
+      "from": "parseConceptData",
+      "to": "isRecord"
+    },
+    {
+      "from": "readJsonFile",
+      "to": "failStartup"
+    },
+    {
+      "from": "loadData",
+      "to": "readJsonFile"
+    },
+    {
+      "from": "getConceptContext",
+      "to": "buildNodeFileMap"
+    },
+    {
+      "from": "getConceptContext",
+      "to": "conceptMatchesSearch"
+    },
+    {
+      "from": "getConceptContext",
+      "to": "resolveFiles"
+    }
+  ]
+}

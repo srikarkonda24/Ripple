@@ -1,0 +1,93 @@
+{
+  "concepts": [
+    {
+      "id": "marketing",
+      "name": "Marketing Site",
+      "description": "The public landing page explaining AgentGuard to visitors.",
+      "nodeIds": [
+        "RootLayout",
+        "Home",
+        "Hero",
+        "Problem",
+        "HowItWorks",
+        "Integrations",
+        "LiveIntelligenceDemo",
+        "Cta",
+        "Nav",
+        "AnimateIn",
+        "SectionLabel",
+        "Button",
+        "useInView",
+        "SectionDivider",
+        "LiveMapFeed",
+        "CodebaseGraph",
+        "getNodeStyle"
+      ]
+    },
+    {
+      "id": "diff-processing",
+      "name": "Diff Processing",
+      "description": "Parses a raw GitHub PR diff into scannable lines.",
+      "nodeIds": [
+        "preprocessDiff",
+        "parseDiff",
+        "extractLines",
+        "classifyFile",
+        "isCommentLine"
+      ]
+    },
+    {
+      "id": "secret-scanner",
+      "name": "Secret Scanner",
+      "description": "Scans code lines for exposed API keys and secrets.",
+      "nodeIds": [
+        "scanApiKeys",
+        "scanLine",
+        "looksLikePlaceholder",
+        "isEnvironmentVariableReference",
+        "isDangerousEnvFallback",
+        "adjustSeverity",
+        "downgradeSeverity"
+      ]
+    },
+    {
+      "id": "scan-orchestrator",
+      "name": "Scan Orchestrator",
+      "description": "Runs the full scan pipeline and decides if a PR should be blocked.",
+      "nodeIds": [
+        "scanDiff",
+        "deduplicateFindings",
+        "sortFindings",
+        "calculateShouldBlock"
+      ]
+    },
+    {
+      "id": "github-integration",
+      "name": "GitHub Integration",
+      "description": "Fetches PR diffs and posts scan results back to GitHub.",
+      "nodeIds": [
+        "getInstallationClient",
+        "getPullRequestDiff",
+        "postScanComment",
+        "buildFindingsComment",
+        "buildCleanComment",
+        "formatFinding",
+        "severityEmoji",
+        "severityLabel",
+        "findExistingComment"
+      ]
+    },
+    {
+      "id": "webhook-entry",
+      "name": "Webhook Entry Point",
+      "description": "Receives GitHub webhooks and coordinates the scan-and-respond flow.",
+      "nodeIds": ["POST", "verifyWebhookSignature"]
+    }
+  ],
+  "conceptEdges": [
+    { "from": "webhook-entry", "to": "github-integration" },
+    { "from": "webhook-entry", "to": "scan-orchestrator" },
+    { "from": "scan-orchestrator", "to": "diff-processing" },
+    { "from": "scan-orchestrator", "to": "secret-scanner" }
+  ]
+}
