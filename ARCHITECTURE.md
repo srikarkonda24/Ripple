@@ -76,8 +76,9 @@ Relationships: CAUSED_BY, SUPERSEDES, CONTRADICTS,
 AFFECTS, DEPENDS_ON, IMPLEMENTED_BY
 
 ### Pipeline
-Raw conversation → chunking → extraction → Zod validation 
-→ dual storage (Postgres + Neo4j) + embeddings (pgvector)
+Raw conversation → chunking (three-pass sub-pipeline, see 
+below) → extraction → Zod validation → dual storage 
+(Postgres + Neo4j) + embeddings (pgvector)
 
 **No LangChain. No LlamaIndex.**
 Pipeline written directly in TypeScript. Every step owned 
@@ -85,7 +86,8 @@ and understood. Abstraction frameworks hide exactly the
 parts that need to be controlled for quality.
 
 **Chunking and extraction use Claude API.**
-Chunking groups messages by semantic topic/decision thread.
+Chunking groups messages by semantic topic/decision thread, 
+via three focused passes (see Chunking Strategy below).
 Extraction uses structured JSON schemas — one per fact type.
 Zod validates every LLM response before it touches storage.
 
@@ -142,6 +144,74 @@ the query. Improves retrieval quality significantly.
 - evidence: decisions that demonstrate this pattern
 - strength: how consistently this appears
 
+### Chunking Strategy — Three-Pass Pipeline
+
+Chunking is not a single LLM call. It's three distinct 
+passes, each with one focused job. This sub-pipeline runs 
+before extraction and produces the chunks extraction operates on.
+
+**Pass 1 — Segmentation**
+Input: full raw conversation, one call.
+Job: find topic boundaries only. No classification yet.
+Output: rough chunks (start_index, end_index, topic label).
+
+**Pass 2 — Classification (parallel)**
+Input: each rough chunk, processed independently and 
+simultaneously via Promise.all, with the previous chunk's 
+topic as minimal context.
+Job: classify signal type (decision | assumption | 
+architecture | rejected | open_question | noise), 
+confidence, and reasoning — one focused judgment per chunk.
+Output: every chunk tagged with signal, confidence, reasoning.
+
+Parallel execution is chosen for fault isolation, not 
+primarily speed — latency does not matter since extraction 
+runs in the background, not in a live user-facing flow. 
+A single failed classification call must never throw or 
+block the others; it resolves to a "failed" status and 
+gets queued for review while the rest complete normally.
+
+**Pass 3 — Synthesis**
+Input: all classified chunks together (labels only, not 
+raw text).
+Job: catch cross-chunk issues invisible at the single-chunk 
+level — contradictions, supersessions, misclassified "noise" 
+chunks that actually connect two real decisions.
+Output: a list of flags, each pointing at specific chunk 
+indices with the issue and a recommendation. Failure here 
+is non-fatal — the pipeline still produces usable output 
+without Pass 3's flags.
+
+**Why three passes instead of one call:** research into 
+existing chunking/extraction pipelines (CDTA, LumberChunker, 
+Hindsight) supports narrowly-scoped sequential LLM calls 
+over one large call trying to segment, classify, and reason 
+simultaneously. A model asked one focused question per call 
+is more reliable than one asked to do everything at once. 
+Hindsight specifically favors coarse, narrative-preserving 
+chunks over many small fragmented ones — chunking should 
+not over-fragment via aggressive rule-based splitting.
+
+**What was explicitly rejected:** a standalone 
+signalAnalysis.ts module computing word frequency, hedging 
+language, and contradiction phrases as a pre-filter before 
+the LLM ever sees the conversation. Risk: silently excluding 
+a real decision before extraction has a chance to find it. 
+Cost savings from pre-filtering are negligible at this scale 
+(cents either way), so the risk isn't worth the marginal 
+savings. The full conversation is always sent to Claude 
+for Pass 1 — nothing is excluded based on keyword heuristics.
+
+A single decision can still span multiple messages and 
+risk being split across a Pass 1 boundary. Overlap injection 
+(a few messages of context carried across adjacent chunk 
+boundaries) remains part of the design to mitigate this.
+
+Model choice for testing: Claude Sonnet, not Haiku, for 
+initial validation of this approach — using the strongest 
+model first isolates whether the *method* works, before 
+optimizing for cost with a cheaper model later.
+
 ### Retrieval
 Not just vector search. Three things combined:
 
@@ -154,12 +224,6 @@ Not just vector search. Three things combined:
 Output: relevant facts + the reasoning chains behind them + 
 applicable project values. This is what gets injected into 
 a new session via ripple-mcp.
-
-### Chunking Strategy
-NOT message-by-message. Conversations are chunked by 
-semantic topic/decision thread. A single decision can 
-span many messages — the chunker groups related messages 
-before extraction. This is critical for extraction quality.
 
 ## Key Decisions Made
 
@@ -175,6 +239,9 @@ before extraction. This is critical for extraction quality.
 | Cohere for reranking | Best reranking API, free tier | No reranking (lower quality) |
 | Supabase for Postgres | Free tier, pgvector built in | Self-hosted Postgres |
 | Neo4j AuraDB | Free tier, no setup | Self-hosted Neo4j |
+| Three-pass chunking | Narrow LLM calls more reliable than one large call | Single-call chunking, rule-based pre-filtering |
+| Parallel Pass 2 | Fault isolation — one failure doesn't block others | Sequential per-chunk calls |
+| No pre-filter before Pass 1 | Risk of silently excluding real decisions outweighs small cost savings | signalAnalysis.ts keyword pre-filtering |
 
 ## What NOT to Suggest to Cursor
 - LangChain or LlamaIndex for orchestration
@@ -185,6 +252,8 @@ before extraction. This is critical for extraction quality.
 - Visualization dashboards (tested June 14, rejected)
 - Enterprise sales motion (unreachable at current stage)
 - Full-stack cloud integrations before core memory works
+- Rule-based keyword pre-filtering before chunking's Pass 1
+- Single-call chunking that skips classification/synthesis passes
 
 ## Build Principles
 
@@ -202,6 +271,9 @@ Decisions are made at the layer they affect, not before.
 - Supabase + Neo4j AuraDB for storage
 - TypeScript pipeline written directly, no orchestration frameworks
 - project_id on every record from day one
+- Three-pass chunking pipeline (segmentation, parallel 
+  classification, synthesis) — see Chunking Strategy
+- No pre-filtering of messages before Pass 1
 
 ### Deferred until the relevant layer
 - Postgres/Neo4j sync strategy → storage layer
@@ -209,10 +281,14 @@ Decisions are made at the layer they affect, not before.
 - Graph edge creation mechanics → storage layer
 - ProjectValue retrieval boost mechanics → retrieval layer
 - Fate of existing MCP tools → ripple-mcp extension layer
+- Two-pass extraction (explicit vs implicit) cost optimization 
+  (Haiku first pass, Sonnet for flagged chunks) → extraction layer, 
+  after chunking quality is validated
 
 ## Build Order
 1. Schema design (done — see Fact Types above)
-2. Chunking pipeline
+2. Chunking pipeline (three-pass: segmentation, classification, 
+   synthesis) — in progress
 3. Extraction pipeline (Claude API + Zod schemas)
 4. Storage layer (Supabase + Neo4j setup)
 5. Embedding pipeline (OpenAI + pgvector)

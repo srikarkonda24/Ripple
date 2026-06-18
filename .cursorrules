@@ -1,30 +1,83 @@
-FOLDER RULES — for ripple-app (Vite + React + TypeScript):
-/src/components → UI only, zero business logic
-/src/features   → business logic by domain (when it emerges)
-/src/server     → API clients, external service calls only
-/src/lib        → pure shared utilities only
-/src/hooks      → React hooks only
-/src/types      → TypeScript types only
-/src/config     → constants and environment variables
+SYSTEM PRINCIPLE
 
-ARCHITECTURE RULES:
-- UI never contains business logic
-- UI never makes direct API calls — goes through /src/server
-- All business logic lives in /src/features
-- Check /src/lib before creating any utility
-- Never duplicate logic
-- Prefer editing existing files over creating new ones
-- Split any file over 200 lines
-- Every new file has a single clearly stated purpose in a comment at the top
-- If a file imports from more than two other modules, question whether it's doing too much
+Ripple is a multi-package system that builds a persistent memory layer for software development.
+All packages MUST operate on a shared canonical data model called RippleCanonicalModel.
+No subsystem is allowed to define its own version of truth.
 
-SECURITY RULES:
+CORE ARCHITECTURE RULES
+
+- All cross-package data MUST conform to RippleCanonicalModel
+- The canonical model is defined in /ripple-core/schema.ts
+- No package may define its own schema for:
+  - Decisions
+  - Code structure
+  - Conversations
+  - Facts
+  - Events
+- Any new concept must be added to /ripple-core/schema.ts first
+
+PACKAGE RESPONSIBILITIES
+
+ripple-extension:
+- captures raw conversation data only
+- no interpretation or transformation of meaning
+
+ripple-parser:
+- converts codebases into deterministic structural graphs
+- no semantic reasoning
+
+ripple-memory:
+- extracts reasoning, decisions, assumptions using LLMs
+- outputs strictly validated canonical schema objects
+
+ripple-mcp:
+- read-only interface over canonical model
+- no mutation or transformation logic
+
+ripple-landing:
+- UI only
+- consumes aggregated snapshot data only
+
+DATA FLOW RULE
+
+All system data must converge into a single canonical state:
+
+extension → parser → memory → ripple-core merger → canonical ProjectState → MCP + UI
+
+NO LOCAL TRUTH RULE
+
+- No package may define its own version of:
+  - Decision
+  - Fact
+  - Node
+  - Project state
+- If it is not in /ripple-core/schema.ts, it does not exist
+
+INTEGRATION RULE
+
+- If a feature cannot be expressed in the canonical model, it must not be built
+- Schema changes must precede implementation changes
+
+ANTI-FRAGMENTATION RULE
+
+- No duplicate representations of project state
+- No parallel "memory systems"
+- No independent truth layers per package
+
+DEBUGGING RULE
+
+- If system outputs are inconsistent, assume schema mismatch first
+- Do not assume UI or pipeline bugs before validating canonical model alignment
+
+SECURITY RULES
+
 - Never hardcode secrets, keys, or tokens
-- Use environment variables (Vite: import.meta.env) for any config that varies by environment
+- Use environment variables for any config that varies by environment
 - Validate any external/user input
 - Never expose internal errors to the UI — show safe messages, log details to console
 
-CODE QUALITY RULES:
+CODE QUALITY RULES
+
 - TypeScript strict mode always, never use any
 - Every function has typed inputs and outputs
 - Every error is caught and handled — nothing fails silently
@@ -32,32 +85,42 @@ CODE QUALITY RULES:
 - Every function does one thing only
 - Code must be readable by a beginner
 
-COMMENTING RULES:
+COMMENTING RULES
+
 - Every file has a comment at the top explaining its purpose in one sentence
 - Every function has a comment above it explaining what it does in plain English
 - Explain WHY decisions were made, not just what the code does
 - Comments must be understandable by a beginner
 - Never write obvious comments like "// loop through array"
 
-ARCHITECTURE ADDITIONS:
-- Prefer simple code over reusable abstractions
-- Do not abstract until duplication exists twice
-- Build the simplest thing that works first, then refactor if needed
-- If you cannot explain why an abstraction exists in one sentence, it should not exist
+MAINTAINABILITY RULES
 
-MAINTAINABILITY RULES:
 - Delete dead code immediately
 - If editing a file over 300 lines, evaluate splitting it first
 - No TODO comments without a linked issue
 - Optimize for future changeability over cleverness
+- Prefer editing existing files over creating new ones
+- Split any file over 200 lines
+- Every new file has a single clearly stated purpose in a comment at the top
+- If a file imports from more than two other modules, question whether it's doing too much
+- Check /src/lib (or package-local shared utilities) before creating any utility
+- Never duplicate logic
 
-ANTI-OVERENGINEERING RULES:
+ANTI-OVERENGINEERING RULES
+
+- Prefer simple code over reusable abstractions
+- Do not abstract until duplication exists twice
+- Build the simplest thing that works first, then refactor if needed
+- If you cannot explain why an abstraction exists in one sentence, it should not exist
 - No classes unless explicitly justified
 - No generic abstractions without 2+ real use cases
 - No manager, handler, or wrapper layers without clear justification
 - Prefer explicit code over magical patterns
 
-UI QUALITY RULES:
+UI QUALITY RULES (ripple-landing)
+
+- UI never contains business logic
+- UI never makes direct API calls — consumes aggregated snapshot data only
 - Never split headlines into individual word spans for animation — animate whole elements only
 - Always confirm button variants have explicit background and text color classes applied
 - After building any UI, reason through whether anything could overlap or clip before finishing

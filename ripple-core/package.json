@@ -1,0 +1,8 @@
+{
+  "name": "ripple-core",
+  "version": "1.0.0",
+  "description": "Canonical schema for Ripple",
+  "main": "schema.ts",
+  "types": "schema.ts",
+  "license": "ISC"
+}
