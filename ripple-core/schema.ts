@@ -1,3 +1,4 @@
+// Defines the canonical Ripple graph and memory model shared across all packages.
 type ID = string;
 
 interface Project {
@@ -29,6 +30,8 @@ interface CodeSymbol {
   endLine?: number;
   calls: ID[];
   referencedBy: ID[];
+  languageKind?: string;
+  metadata?: Record<string, unknown>;
 }
 
 type EdgeType =
@@ -36,6 +39,10 @@ type EdgeType =
   | "IMPLEMENTS"
   | "CALLS"
   | "CONTAINS"
+  | "IMPORTS"
+  | "EXPORTS"
+  | "RE_EXPORTS"
+  | "REFERENCES"
   | "REPLACES"
   | "MODIFIES"
   | "AFFECTS";

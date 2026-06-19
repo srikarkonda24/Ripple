@@ -32,7 +32,7 @@ function isPascalCase(name: string): boolean {
   return first >= "A" && first <= "Z";
 }
 
-function hasFunctionCall(body: string, name: string): boolean {
+export function hasFunctionCall(body: string, name: string): boolean {
   const pattern = new RegExp(`\\b${escapeRegex(name)}\\s*\\(`, "g");
   let match: RegExpExecArray | null;
 

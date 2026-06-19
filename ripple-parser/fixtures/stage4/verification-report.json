@@ -1,0 +1,975 @@
+{
+  "fixtureRoot": "C:\\Users\\srika\\Desktop\\Ripple\\ripple-parser\\fixtures\\stage4",
+  "oracle": "IRFrozen + RewriteCorrect + Deterministic + Adversarial",
+  "generatedFixtureCount": 14,
+  "passedCount": 14,
+  "allPassed": true,
+  "totalRewrites": 2,
+  "invariantViolations": 0,
+  "observability": {
+    "rewriteTrace": [
+      {
+        "edgeId": "2922a4faa15140ffa8e2e8b71b05daa089842b10f7d4a3916a611c48cfde8825",
+        "edgeType": "REFERENCES",
+        "fromId": "4c23ce0d5a5d412f64881c5d8dad0db98253531fb11795a63926ff011f32e455",
+        "before": "ca9e860b0eac3dfc74fd109de45ad367b0a8e1f150d9fd50d755a6e4d17800bb",
+        "after": "f6a11d6810c4d7a026743b6fa99bf7696149622c133c7e4026caf26a3a57f407",
+        "filePath": "app.ts",
+        "specifier": "@/helper",
+        "rule": "target_upgrade",
+        "fixture": "alias-path"
+      },
+      {
+        "edgeId": "3111762cbb1766d1f72380a0dbcf8bea3b2a0f721d0ae3a7c7bea268a011df03",
+        "edgeType": "IMPORTS",
+        "fromId": "84dd6a83459413d5bb638cd885f20ef0dbebf2ebf10d0f35d1c9ca424b0ca06a",
+        "before": "ca9e860b0eac3dfc74fd109de45ad367b0a8e1f150d9fd50d755a6e4d17800bb",
+        "after": "f6a11d6810c4d7a026743b6fa99bf7696149622c133c7e4026caf26a3a57f407",
+        "filePath": "app.ts",
+        "specifier": "@/helper",
+        "rule": "target_upgrade",
+        "fixture": "alias-path"
+      }
+    ],
+    "resolutionTrace": [
+      {
+        "filePath": "app.ts",
+        "specifier": "./auth",
+        "bindingKind": "named",
+        "requestedName": "login",
+        "candidates": [
+          "auth.ts"
+        ],
+        "rejected": [],
+        "selected": "auth.ts",
+        "selectedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "rule": "relative path resolution → export catalog lookup",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 1
+        },
+        "currentToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "resolvedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "resolvedKind": "resolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "simple-import"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./auth",
+        "bindingKind": "default",
+        "requestedName": "default",
+        "candidates": [
+          "auth.ts"
+        ],
+        "rejected": [],
+        "selected": "auth.ts",
+        "selectedToId": "2984a1b8136ff7d9ae33297d127bc562202aeb184a43fe4685ff577ff0bdc7b5",
+        "rule": "relative path resolution → export catalog lookup",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 1
+        },
+        "currentToId": "2984a1b8136ff7d9ae33297d127bc562202aeb184a43fe4685ff577ff0bdc7b5",
+        "resolvedToId": "2984a1b8136ff7d9ae33297d127bc562202aeb184a43fe4685ff577ff0bdc7b5",
+        "resolvedKind": "resolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "default-export"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./index",
+        "bindingKind": "named",
+        "requestedName": "login",
+        "candidates": [
+          "index.ts"
+        ],
+        "rejected": [],
+        "selected": "index.ts",
+        "selectedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "rule": "relative path resolution → export catalog lookup",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 1
+        },
+        "currentToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "resolvedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "resolvedKind": "resolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "barrel"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./public",
+        "bindingKind": "named",
+        "requestedName": "signIn",
+        "candidates": [
+          "public.ts"
+        ],
+        "rejected": [],
+        "selected": "public.ts",
+        "selectedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "rule": "relative path resolution → export catalog lookup",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 1
+        },
+        "currentToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "resolvedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "resolvedKind": "resolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "reexport-named"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./index",
+        "bindingKind": "named",
+        "requestedName": "login",
+        "candidates": [
+          "index.ts"
+        ],
+        "rejected": [],
+        "selected": "index.ts",
+        "selectedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "rule": "relative path resolution → export catalog lookup",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 1
+        },
+        "currentToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "resolvedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+        "resolvedKind": "resolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "reexport-star"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./a",
+        "bindingKind": "named",
+        "requestedName": "missing",
+        "candidates": [
+          "a.ts"
+        ],
+        "rejected": [],
+        "selected": "a.ts",
+        "selectedToId": "e2ec61b726ae36f9f9fe6d9cebc023ee2d46139b0de2aa9e99602fdee76db62a",
+        "rule": "relative path resolution → export not found",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 0
+        },
+        "currentToId": "e2ec61b726ae36f9f9fe6d9cebc023ee2d46139b0de2aa9e99602fdee76db62a",
+        "resolvedToId": "e2ec61b726ae36f9f9fe6d9cebc023ee2d46139b0de2aa9e99602fdee76db62a",
+        "resolvedKind": "unresolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "circular"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "react",
+        "bindingKind": "default",
+        "requestedName": "default",
+        "candidates": [],
+        "rejected": [],
+        "selected": null,
+        "selectedToId": "814485548c49e6482441910a9af15075ab8512333a568780ee1ce831315f45fe",
+        "rule": "package specifier (external)",
+        "scoreBreakdown": {},
+        "currentToId": "814485548c49e6482441910a9af15075ab8512333a568780ee1ce831315f45fe",
+        "resolvedToId": "814485548c49e6482441910a9af15075ab8512333a568780ee1ce831315f45fe",
+        "resolvedKind": "external",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "external"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./missing",
+        "bindingKind": "named",
+        "requestedName": "missing",
+        "candidates": [],
+        "rejected": [
+          {
+            "candidate": "./missing",
+            "reason": "path_not_found"
+          }
+        ],
+        "selected": null,
+        "selectedToId": "480bfd94fba078ea8aca989c25d7ea3381b565ee8684760dafaf37e172b8bbaf",
+        "rule": "relative path resolution",
+        "scoreBreakdown": {
+          "relativeMatch": 0
+        },
+        "currentToId": "480bfd94fba078ea8aca989c25d7ea3381b565ee8684760dafaf37e172b8bbaf",
+        "resolvedToId": "480bfd94fba078ea8aca989c25d7ea3381b565ee8684760dafaf37e172b8bbaf",
+        "resolvedKind": "unresolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "unresolved-path"
+      },
+      {
+        "filePath": "App.tsx",
+        "specifier": "./Button",
+        "bindingKind": "named",
+        "requestedName": "Button",
+        "candidates": [
+          "Button.tsx"
+        ],
+        "rejected": [],
+        "selected": "Button.tsx",
+        "selectedToId": "0334e60eee015c31f87d99cef3fea3032bdc0b3b034f1b69f7f5ad79b36d8f9a",
+        "rule": "relative path resolution → export catalog lookup",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 1
+        },
+        "currentToId": "0334e60eee015c31f87d99cef3fea3032bdc0b3b034f1b69f7f5ad79b36d8f9a",
+        "resolvedToId": "0334e60eee015c31f87d99cef3fea3032bdc0b3b034f1b69f7f5ad79b36d8f9a",
+        "resolvedKind": "resolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "react-components"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./auth",
+        "bindingKind": "namespace",
+        "candidates": [
+          "auth.ts"
+        ],
+        "rejected": [],
+        "selected": "auth.ts",
+        "selectedToId": "ffc04328d4ff9aa472424f1ad3adafcbf9b637d182b2a364bc81e4f240544d23",
+        "rule": "relative path resolution",
+        "scoreBreakdown": {
+          "relativeMatch": 1
+        },
+        "currentToId": "ffc04328d4ff9aa472424f1ad3adafcbf9b637d182b2a364bc81e4f240544d23",
+        "resolvedToId": "ffc04328d4ff9aa472424f1ad3adafcbf9b637d182b2a364bc81e4f240544d23",
+        "resolvedKind": "resolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "namespace"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./util",
+        "bindingKind": "named",
+        "requestedName": "helper",
+        "candidates": [
+          "util.ts"
+        ],
+        "rejected": [],
+        "selected": "util.ts",
+        "selectedToId": "ce004d2d2d9536dd088cd21d7ea3846b5e0d81be78ff8f96182628cd92675252",
+        "rule": "relative path resolution → export catalog lookup",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 1
+        },
+        "currentToId": "ce004d2d2d9536dd088cd21d7ea3846b5e0d81be78ff8f96182628cd92675252",
+        "resolvedToId": "ce004d2d2d9536dd088cd21d7ea3846b5e0d81be78ff8f96182628cd92675252",
+        "resolvedKind": "resolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "mixed-stage2"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "@/helper",
+        "bindingKind": "named",
+        "requestedName": "helper",
+        "candidates": [
+          "lib/helper"
+        ],
+        "rejected": [],
+        "selected": "lib/helper.ts",
+        "selectedToId": "f6a11d6810c4d7a026743b6fa99bf7696149622c133c7e4026caf26a3a57f407",
+        "rule": "tsconfig.paths match → export catalog lookup",
+        "scoreBreakdown": {
+          "aliasMatch": 1,
+          "relativeMatch": 0.2,
+          "exportMatch": 1
+        },
+        "currentToId": "ca9e860b0eac3dfc74fd109de45ad367b0a8e1f150d9fd50d755a6e4d17800bb",
+        "resolvedToId": "f6a11d6810c4d7a026743b6fa99bf7696149622c133c7e4026caf26a3a57f407",
+        "resolvedKind": "resolved",
+        "upgradeApplied": true,
+        "fixture": "alias-path"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "@/missing",
+        "bindingKind": "named",
+        "requestedName": "helper",
+        "candidates": [
+          "lib/missing"
+        ],
+        "rejected": [
+          {
+            "candidate": "lib/missing",
+            "reason": "mapped_path_not_in_repo"
+          }
+        ],
+        "selected": null,
+        "selectedToId": "1b93b6f26cb185ec76b3adadb3f2f97a786ffb1a66db22676d2adce4c02e1233",
+        "rule": "tsconfig.paths match",
+        "scoreBreakdown": {},
+        "currentToId": "1b93b6f26cb185ec76b3adadb3f2f97a786ffb1a66db22676d2adce4c02e1233",
+        "resolvedToId": "1b93b6f26cb185ec76b3adadb3f2f97a786ffb1a66db22676d2adce4c02e1233",
+        "resolvedKind": "unresolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "broken-alias"
+      },
+      {
+        "filePath": "app.ts",
+        "specifier": "./auth",
+        "bindingKind": "named",
+        "requestedName": "doesNotExist",
+        "candidates": [
+          "auth.ts"
+        ],
+        "rejected": [],
+        "selected": "auth.ts",
+        "selectedToId": "9175d3c7661d1cbff882d4153898a9dd1c9642321c89349c71dae96891722edf",
+        "rule": "relative path resolution → export not found",
+        "scoreBreakdown": {
+          "relativeMatch": 1,
+          "exportMatch": 0
+        },
+        "currentToId": "9175d3c7661d1cbff882d4153898a9dd1c9642321c89349c71dae96891722edf",
+        "resolvedToId": "9175d3c7661d1cbff882d4153898a9dd1c9642321c89349c71dae96891722edf",
+        "resolvedKind": "unresolved",
+        "upgradeApplied": false,
+        "skipReason": "same_target",
+        "fixture": "missing-export"
+      }
+    ],
+    "metrics": {
+      "resolvedEdges": 105,
+      "unresolvedEdges": 13,
+      "externalEdges": 1,
+      "aliasBindings": 2,
+      "aliasUpgraded": 1,
+      "aliasSuccessRate": 0.5
+    }
+  },
+  "layers": {
+    "parity": {
+      "passed": 11,
+      "total": 11
+    },
+    "rewrite": {
+      "passed": 1,
+      "total": 1
+    },
+    "adversarial": {
+      "passed": 2,
+      "total": 2
+    }
+  },
+  "summary": "parity ✔ | rewrite ✔ | invariants 0 violations | determinism ✔",
+  "fixtures": [
+    {
+      "fixture": "simple-import",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./auth",
+          "bindingKind": "named",
+          "requestedName": "login",
+          "candidates": [
+            "auth.ts"
+          ],
+          "rejected": [],
+          "selected": "auth.ts",
+          "selectedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "rule": "relative path resolution → export catalog lookup",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 1
+          },
+          "currentToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "resolvedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "resolvedKind": "resolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 8,
+        "unresolvedEdges": 0,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "default-export",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./auth",
+          "bindingKind": "default",
+          "requestedName": "default",
+          "candidates": [
+            "auth.ts"
+          ],
+          "rejected": [],
+          "selected": "auth.ts",
+          "selectedToId": "2984a1b8136ff7d9ae33297d127bc562202aeb184a43fe4685ff577ff0bdc7b5",
+          "rule": "relative path resolution → export catalog lookup",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 1
+          },
+          "currentToId": "2984a1b8136ff7d9ae33297d127bc562202aeb184a43fe4685ff577ff0bdc7b5",
+          "resolvedToId": "2984a1b8136ff7d9ae33297d127bc562202aeb184a43fe4685ff577ff0bdc7b5",
+          "resolvedKind": "resolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 8,
+        "unresolvedEdges": 0,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "barrel",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./index",
+          "bindingKind": "named",
+          "requestedName": "login",
+          "candidates": [
+            "index.ts"
+          ],
+          "rejected": [],
+          "selected": "index.ts",
+          "selectedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "rule": "relative path resolution → export catalog lookup",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 1
+          },
+          "currentToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "resolvedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "resolvedKind": "resolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 11,
+        "unresolvedEdges": 0,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "reexport-named",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./public",
+          "bindingKind": "named",
+          "requestedName": "signIn",
+          "candidates": [
+            "public.ts"
+          ],
+          "rejected": [],
+          "selected": "public.ts",
+          "selectedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "rule": "relative path resolution → export catalog lookup",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 1
+          },
+          "currentToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "resolvedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "resolvedKind": "resolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 11,
+        "unresolvedEdges": 0,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "reexport-star",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./index",
+          "bindingKind": "named",
+          "requestedName": "login",
+          "candidates": [
+            "index.ts"
+          ],
+          "rejected": [],
+          "selected": "index.ts",
+          "selectedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "rule": "relative path resolution → export catalog lookup",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 1
+          },
+          "currentToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "resolvedToId": "89a8e245ae3f59d8a98964a5dd2536d9b5f9913c01b7b4a160a536185782ffa0",
+          "resolvedKind": "resolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 11,
+        "unresolvedEdges": 0,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "circular",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./a",
+          "bindingKind": "named",
+          "requestedName": "missing",
+          "candidates": [
+            "a.ts"
+          ],
+          "rejected": [],
+          "selected": "a.ts",
+          "selectedToId": "e2ec61b726ae36f9f9fe6d9cebc023ee2d46139b0de2aa9e99602fdee76db62a",
+          "rule": "relative path resolution → export not found",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 0
+          },
+          "currentToId": "e2ec61b726ae36f9f9fe6d9cebc023ee2d46139b0de2aa9e99602fdee76db62a",
+          "resolvedToId": "e2ec61b726ae36f9f9fe6d9cebc023ee2d46139b0de2aa9e99602fdee76db62a",
+          "resolvedKind": "unresolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 9,
+        "unresolvedEdges": 2,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "external",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "react",
+          "bindingKind": "default",
+          "requestedName": "default",
+          "candidates": [],
+          "rejected": [],
+          "selected": null,
+          "selectedToId": "814485548c49e6482441910a9af15075ab8512333a568780ee1ce831315f45fe",
+          "rule": "package specifier (external)",
+          "scoreBreakdown": {},
+          "currentToId": "814485548c49e6482441910a9af15075ab8512333a568780ee1ce831315f45fe",
+          "resolvedToId": "814485548c49e6482441910a9af15075ab8512333a568780ee1ce831315f45fe",
+          "resolvedKind": "external",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 2,
+        "unresolvedEdges": 2,
+        "externalEdges": 1,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "unresolved-path",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./missing",
+          "bindingKind": "named",
+          "requestedName": "missing",
+          "candidates": [],
+          "rejected": [
+            {
+              "candidate": "./missing",
+              "reason": "path_not_found"
+            }
+          ],
+          "selected": null,
+          "selectedToId": "480bfd94fba078ea8aca989c25d7ea3381b565ee8684760dafaf37e172b8bbaf",
+          "rule": "relative path resolution",
+          "scoreBreakdown": {
+            "relativeMatch": 0
+          },
+          "currentToId": "480bfd94fba078ea8aca989c25d7ea3381b565ee8684760dafaf37e172b8bbaf",
+          "resolvedToId": "480bfd94fba078ea8aca989c25d7ea3381b565ee8684760dafaf37e172b8bbaf",
+          "resolvedKind": "unresolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 2,
+        "unresolvedEdges": 3,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "react-components",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "App.tsx",
+          "specifier": "./Button",
+          "bindingKind": "named",
+          "requestedName": "Button",
+          "candidates": [
+            "Button.tsx"
+          ],
+          "rejected": [],
+          "selected": "Button.tsx",
+          "selectedToId": "0334e60eee015c31f87d99cef3fea3032bdc0b3b034f1b69f7f5ad79b36d8f9a",
+          "rule": "relative path resolution → export catalog lookup",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 1
+          },
+          "currentToId": "0334e60eee015c31f87d99cef3fea3032bdc0b3b034f1b69f7f5ad79b36d8f9a",
+          "resolvedToId": "0334e60eee015c31f87d99cef3fea3032bdc0b3b034f1b69f7f5ad79b36d8f9a",
+          "resolvedKind": "resolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 8,
+        "unresolvedEdges": 0,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "namespace",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./auth",
+          "bindingKind": "namespace",
+          "candidates": [
+            "auth.ts"
+          ],
+          "rejected": [],
+          "selected": "auth.ts",
+          "selectedToId": "ffc04328d4ff9aa472424f1ad3adafcbf9b637d182b2a364bc81e4f240544d23",
+          "rule": "relative path resolution",
+          "scoreBreakdown": {
+            "relativeMatch": 1
+          },
+          "currentToId": "ffc04328d4ff9aa472424f1ad3adafcbf9b637d182b2a364bc81e4f240544d23",
+          "resolvedToId": "ffc04328d4ff9aa472424f1ad3adafcbf9b637d182b2a364bc81e4f240544d23",
+          "resolvedKind": "resolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 8,
+        "unresolvedEdges": 0,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "mixed-stage2",
+      "layer": "parity",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./util",
+          "bindingKind": "named",
+          "requestedName": "helper",
+          "candidates": [
+            "util.ts"
+          ],
+          "rejected": [],
+          "selected": "util.ts",
+          "selectedToId": "ce004d2d2d9536dd088cd21d7ea3846b5e0d81be78ff8f96182628cd92675252",
+          "rule": "relative path resolution → export catalog lookup",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 1
+          },
+          "currentToId": "ce004d2d2d9536dd088cd21d7ea3846b5e0d81be78ff8f96182628cd92675252",
+          "resolvedToId": "ce004d2d2d9536dd088cd21d7ea3846b5e0d81be78ff8f96182628cd92675252",
+          "resolvedKind": "resolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 12,
+        "unresolvedEdges": 0,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "alias-path",
+      "layer": "rewrite",
+      "passed": true,
+      "rewriteCount": 2,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [
+        {
+          "edgeId": "2922a4faa15140ffa8e2e8b71b05daa089842b10f7d4a3916a611c48cfde8825",
+          "edgeType": "REFERENCES",
+          "fromId": "4c23ce0d5a5d412f64881c5d8dad0db98253531fb11795a63926ff011f32e455",
+          "before": "ca9e860b0eac3dfc74fd109de45ad367b0a8e1f150d9fd50d755a6e4d17800bb",
+          "after": "f6a11d6810c4d7a026743b6fa99bf7696149622c133c7e4026caf26a3a57f407",
+          "filePath": "app.ts",
+          "specifier": "@/helper",
+          "rule": "target_upgrade",
+          "fixture": "alias-path"
+        },
+        {
+          "edgeId": "3111762cbb1766d1f72380a0dbcf8bea3b2a0f721d0ae3a7c7bea268a011df03",
+          "edgeType": "IMPORTS",
+          "fromId": "84dd6a83459413d5bb638cd885f20ef0dbebf2ebf10d0f35d1c9ca424b0ca06a",
+          "before": "ca9e860b0eac3dfc74fd109de45ad367b0a8e1f150d9fd50d755a6e4d17800bb",
+          "after": "f6a11d6810c4d7a026743b6fa99bf7696149622c133c7e4026caf26a3a57f407",
+          "filePath": "app.ts",
+          "specifier": "@/helper",
+          "rule": "target_upgrade",
+          "fixture": "alias-path"
+        }
+      ],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "@/helper",
+          "bindingKind": "named",
+          "requestedName": "helper",
+          "candidates": [
+            "lib/helper"
+          ],
+          "rejected": [],
+          "selected": "lib/helper.ts",
+          "selectedToId": "f6a11d6810c4d7a026743b6fa99bf7696149622c133c7e4026caf26a3a57f407",
+          "rule": "tsconfig.paths match → export catalog lookup",
+          "scoreBreakdown": {
+            "aliasMatch": 1,
+            "relativeMatch": 0.2,
+            "exportMatch": 1
+          },
+          "currentToId": "ca9e860b0eac3dfc74fd109de45ad367b0a8e1f150d9fd50d755a6e4d17800bb",
+          "resolvedToId": "f6a11d6810c4d7a026743b6fa99bf7696149622c133c7e4026caf26a3a57f407",
+          "resolvedKind": "resolved",
+          "upgradeApplied": true
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 7,
+        "unresolvedEdges": 1,
+        "externalEdges": 0,
+        "aliasBindings": 1,
+        "aliasUpgraded": 1,
+        "aliasSuccessRate": 1
+      }
+    },
+    {
+      "fixture": "broken-alias",
+      "layer": "adversarial",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "@/missing",
+          "bindingKind": "named",
+          "requestedName": "helper",
+          "candidates": [
+            "lib/missing"
+          ],
+          "rejected": [
+            {
+              "candidate": "lib/missing",
+              "reason": "mapped_path_not_in_repo"
+            }
+          ],
+          "selected": null,
+          "selectedToId": "1b93b6f26cb185ec76b3adadb3f2f97a786ffb1a66db22676d2adce4c02e1233",
+          "rule": "tsconfig.paths match",
+          "scoreBreakdown": {},
+          "currentToId": "1b93b6f26cb185ec76b3adadb3f2f97a786ffb1a66db22676d2adce4c02e1233",
+          "resolvedToId": "1b93b6f26cb185ec76b3adadb3f2f97a786ffb1a66db22676d2adce4c02e1233",
+          "resolvedKind": "unresolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 3,
+        "unresolvedEdges": 3,
+        "externalEdges": 0,
+        "aliasBindings": 1,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 0
+      }
+    },
+    {
+      "fixture": "missing-export",
+      "layer": "adversarial",
+      "passed": true,
+      "rewriteCount": 0,
+      "violations": [],
+      "determinism": true,
+      "rewriteTrace": [],
+      "resolutionTrace": [
+        {
+          "filePath": "app.ts",
+          "specifier": "./auth",
+          "bindingKind": "named",
+          "requestedName": "doesNotExist",
+          "candidates": [
+            "auth.ts"
+          ],
+          "rejected": [],
+          "selected": "auth.ts",
+          "selectedToId": "9175d3c7661d1cbff882d4153898a9dd1c9642321c89349c71dae96891722edf",
+          "rule": "relative path resolution → export not found",
+          "scoreBreakdown": {
+            "relativeMatch": 1,
+            "exportMatch": 0
+          },
+          "currentToId": "9175d3c7661d1cbff882d4153898a9dd1c9642321c89349c71dae96891722edf",
+          "resolvedToId": "9175d3c7661d1cbff882d4153898a9dd1c9642321c89349c71dae96891722edf",
+          "resolvedKind": "unresolved",
+          "upgradeApplied": false,
+          "skipReason": "same_target"
+        }
+      ],
+      "metrics": {
+        "resolvedEdges": 5,
+        "unresolvedEdges": 2,
+        "externalEdges": 0,
+        "aliasBindings": 0,
+        "aliasUpgraded": 0,
+        "aliasSuccessRate": 1
+      }
+    }
+  ]
+}

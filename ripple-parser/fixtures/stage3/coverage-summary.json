@@ -1,0 +1,94 @@
+{
+  "modules": [
+    {
+      "module": "buildReport.ts",
+      "functionsTotal": 10,
+      "functionsCovered": 7,
+      "rangesTotal": 14,
+      "rangesCovered": 7,
+      "functionCoveragePercent": 70,
+      "rangeCoveragePercent": 50
+    },
+    {
+      "module": "edgeUtils.ts",
+      "functionsTotal": 4,
+      "functionsCovered": 4,
+      "rangesTotal": 8,
+      "rangesCovered": 7,
+      "functionCoveragePercent": 100,
+      "rangeCoveragePercent": 87.5
+    },
+    {
+      "module": "fileAnalysis.ts",
+      "functionsTotal": 5,
+      "functionsCovered": 4,
+      "rangesTotal": 13,
+      "rangesCovered": 8,
+      "functionCoveragePercent": 80,
+      "rangeCoveragePercent": 61.5
+    },
+    {
+      "module": "finalizeGraph.ts",
+      "functionsTotal": 8,
+      "functionsCovered": 8,
+      "rangesTotal": 19,
+      "rangesCovered": 18,
+      "functionCoveragePercent": 100,
+      "rangeCoveragePercent": 94.7
+    },
+    {
+      "module": "indexes.ts",
+      "functionsTotal": 13,
+      "functionsCovered": 9,
+      "rangesTotal": 30,
+      "rangesCovered": 19,
+      "functionCoveragePercent": 69.2,
+      "rangeCoveragePercent": 63.3
+    },
+    {
+      "module": "parseModuleSurface.ts",
+      "functionsTotal": 24,
+      "functionsCovered": 19,
+      "rangesTotal": 54,
+      "rangesCovered": 34,
+      "functionCoveragePercent": 79.2,
+      "rangeCoveragePercent": 63
+    },
+    {
+      "module": "referenceGraph.ts",
+      "functionsTotal": 12,
+      "functionsCovered": 11,
+      "rangesTotal": 63,
+      "rangesCovered": 44,
+      "functionCoveragePercent": 91.7,
+      "rangeCoveragePercent": 69.8
+    },
+    {
+      "module": "runStage3.ts",
+      "functionsTotal": 15,
+      "functionsCovered": 12,
+      "rangesTotal": 34,
+      "rangesCovered": 20,
+      "functionCoveragePercent": 80,
+      "rangeCoveragePercent": 58.8
+    },
+    {
+      "module": "symbolResolver.ts",
+      "functionsTotal": 11,
+      "functionsCovered": 10,
+      "rangesTotal": 47,
+      "rangesCovered": 37,
+      "functionCoveragePercent": 90.9,
+      "rangeCoveragePercent": 78.7
+    },
+    {
+      "module": "validator.ts",
+      "functionsTotal": 7,
+      "functionsCovered": 7,
+      "rangesTotal": 17,
+      "rangesCovered": 13,
+      "functionCoveragePercent": 100,
+      "rangeCoveragePercent": 76.5
+    }
+  ]
+}

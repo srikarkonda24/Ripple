@@ -1,21 +1,11 @@
-// Pure, deterministic import path resolution into in-repo / external / unresolved DEPENDS_ON targets.
+// Resolves relative import specifiers to in-repository file paths for the TS adapter.
 import * as path from "path";
-import {
-  buildExternalTargetId,
-  buildModuleSymbolId,
-  buildUnresolvedTargetId,
-} from "./symbolId";
 
 const RELATIVE_EXTENSIONS = [".ts", ".tsx", ".js", ".jsx"];
 
-export interface ImportResolution {
-  kind: "in-repo" | "external" | "unresolved";
-  toId: string;
-}
-
 function firstExistingCandidate(
   candidates: string[],
-  repoFilePaths: Set<string>
+  repoFilePaths: ReadonlySet<string>
 ): string | null {
   for (const candidate of candidates) {
     if (repoFilePaths.has(candidate)) {
@@ -27,7 +17,7 @@ function firstExistingCandidate(
 
 function directoryFallback(
   joined: string,
-  repoFilePaths: Set<string>
+  repoFilePaths: ReadonlySet<string>
 ): string | null {
   const prefix = `${joined}/`;
   const matches = Array.from(repoFilePaths)
@@ -36,10 +26,11 @@ function directoryFallback(
   return matches[0] ?? null;
 }
 
-export function resolveImportFilePath(
+/** Resolves a relative module specifier to a repository file path when one exists. */
+export function resolveRelativeImportPath(
   fromFilePath: string,
   specifier: string,
-  repoFilePaths: Set<string>
+  repoFilePaths: ReadonlySet<string>
 ): string | null {
   const baseDir = path.posix.dirname(fromFilePath);
   const joined = path.posix
@@ -71,40 +62,26 @@ export function resolveImportFilePath(
   return directoryFallback(joined, repoFilePaths);
 }
 
-export function resolveImportTarget(
-  fromFilePath: string,
-  normalizedSpecifier: string,
-  repoFilePaths: Set<string>,
-  contentHashByPath: Map<string, string>
-): ImportResolution {
-  if (normalizedSpecifier.startsWith(".")) {
-    const resolvedPath = resolveImportFilePath(
-      fromFilePath,
-      normalizedSpecifier,
-      repoFilePaths
-    );
-    if (resolvedPath) {
-      const contentHash = contentHashByPath.get(resolvedPath) ?? "";
-      return {
-        kind: "in-repo",
-        toId: buildModuleSymbolId(resolvedPath, contentHash),
-      };
-    }
-    return {
-      kind: "unresolved",
-      toId: buildUnresolvedTargetId(normalizedSpecifier),
-    };
+/** Resolves a repository-root-relative module path to an existing file path. */
+export function resolveRepoRootImportPath(
+  repoRelativePath: string,
+  repoFilePaths: ReadonlySet<string>
+): string | null {
+  const normalized = repoRelativePath.replace(/^\.\//, "").replace(/\\/g, "/");
+  const exactCandidates = [
+    normalized,
+    ...RELATIVE_EXTENSIONS.map((extension) => `${normalized}${extension}`),
+  ];
+  const exact = firstExistingCandidate(exactCandidates, repoFilePaths);
+  if (exact) {
+    return exact;
   }
 
-  if (normalizedSpecifier.startsWith("@/")) {
-    return {
-      kind: "unresolved",
-      toId: buildUnresolvedTargetId(normalizedSpecifier),
-    };
-  }
-
-  return {
-    kind: "external",
-    toId: buildExternalTargetId(normalizedSpecifier),
-  };
+  const indexCandidates = [
+    `${normalized}/index.ts`,
+    `${normalized}/index.tsx`,
+    `${normalized}/index.js`,
+    `${normalized}/index.jsx`,
+  ];
+  return firstExistingCandidate(indexCandidates, repoFilePaths);
 }

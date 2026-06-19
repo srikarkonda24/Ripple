@@ -1,0 +1,582 @@
+{
+  "fixtureRoot": "C:\\Users\\srika\\Desktop\\Ripple\\ripple-parser\\fixtures\\stage3",
+  "generatedFixtureCount": 11,
+  "passedCount": 11,
+  "allPassed": true,
+  "allDeterministic": true,
+  "fixtures": [
+    {
+      "fixture": "simple-import",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:login]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:login]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 7312,
+        "secondLength": 7312
+      },
+      "buildReport": {
+        "filesTotal": 2,
+        "filesProcessed": 2,
+        "filesSkipped": 0,
+        "symbolsTotal": 2,
+        "edgesStage2": 3,
+        "edgesStage3Added": 5,
+        "edgesTotal": 8,
+        "importsResolved": 1,
+        "importsUnresolved": 0,
+        "externalImports": 0,
+        "reExportsProcessed": 0,
+        "crossFileCalls": 1,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "default-export",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[default]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[default]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[default]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[default]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 7258,
+        "secondLength": 7258
+      },
+      "buildReport": {
+        "filesTotal": 2,
+        "filesProcessed": 2,
+        "filesSkipped": 0,
+        "symbolsTotal": 2,
+        "edgesStage2": 3,
+        "edgesStage3Added": 5,
+        "edgesTotal": 8,
+        "importsResolved": 1,
+        "importsUnresolved": 0,
+        "externalImports": 0,
+        "reExportsProcessed": 0,
+        "crossFileCalls": 1,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "barrel",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:login]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function",
+        "symbol:index.ts#index:module --RE_EXPORTS[reexport-named:login]--> symbol:auth.ts#login:function"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:login]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function",
+        "symbol:index.ts#index:module --RE_EXPORTS[reexport-named:login]--> symbol:auth.ts#login:function"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 10263,
+        "secondLength": 10263
+      },
+      "buildReport": {
+        "filesTotal": 3,
+        "filesProcessed": 3,
+        "filesSkipped": 0,
+        "symbolsTotal": 3,
+        "edgesStage2": 5,
+        "edgesStage3Added": 6,
+        "edgesTotal": 11,
+        "importsResolved": 1,
+        "importsUnresolved": 0,
+        "externalImports": 0,
+        "reExportsProcessed": 1,
+        "crossFileCalls": 1,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "reexport-named",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:signIn]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function",
+        "symbol:public.ts#public:module --RE_EXPORTS[reexport-named:signIn]--> symbol:auth.ts#login:function"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:signIn]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function",
+        "symbol:public.ts#public:module --RE_EXPORTS[reexport-named:signIn]--> symbol:auth.ts#login:function"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 10282,
+        "secondLength": 10282
+      },
+      "buildReport": {
+        "filesTotal": 3,
+        "filesProcessed": 3,
+        "filesSkipped": 0,
+        "symbolsTotal": 3,
+        "edgesStage2": 5,
+        "edgesStage3Added": 6,
+        "edgesTotal": 11,
+        "importsResolved": 1,
+        "importsUnresolved": 0,
+        "externalImports": 0,
+        "reExportsProcessed": 1,
+        "crossFileCalls": 1,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "reexport-star",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:login]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function",
+        "symbol:index.ts#index:module --RE_EXPORTS[reexport-all:./auth]--> symbol:auth.ts#login:function"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:login]--> symbol:auth.ts#login:function",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function",
+        "symbol:index.ts#index:module --RE_EXPORTS[reexport-all:./auth]--> symbol:auth.ts#login:function"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 9786,
+        "secondLength": 9786
+      },
+      "buildReport": {
+        "filesTotal": 3,
+        "filesProcessed": 3,
+        "filesSkipped": 0,
+        "symbolsTotal": 3,
+        "edgesStage2": 5,
+        "edgesStage3Added": 6,
+        "edgesTotal": 11,
+        "importsResolved": 1,
+        "importsUnresolved": 0,
+        "externalImports": 0,
+        "reExportsProcessed": 1,
+        "crossFileCalls": 1,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "circular",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:missing]--> virtual:unresolved",
+        "symbol:a.ts#a:module --RE_EXPORTS[reexport-all:./b]--> symbol:b.ts#b:module",
+        "symbol:app.ts#main:function --REFERENCES[call]--> virtual:unresolved",
+        "symbol:b.ts#b:module --RE_EXPORTS[reexport-all:./a]--> symbol:a.ts#a:module"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:missing]--> virtual:unresolved",
+        "symbol:a.ts#a:module --RE_EXPORTS[reexport-all:./b]--> symbol:b.ts#b:module",
+        "symbol:app.ts#main:function --REFERENCES[call]--> virtual:unresolved",
+        "symbol:b.ts#b:module --RE_EXPORTS[reexport-all:./a]--> symbol:a.ts#a:module"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 9764,
+        "secondLength": 9764
+      },
+      "buildReport": {
+        "filesTotal": 3,
+        "filesProcessed": 3,
+        "filesSkipped": 0,
+        "symbolsTotal": 3,
+        "edgesStage2": 6,
+        "edgesStage3Added": 5,
+        "edgesTotal": 11,
+        "importsResolved": 0,
+        "importsUnresolved": 2,
+        "externalImports": 0,
+        "reExportsProcessed": 2,
+        "crossFileCalls": 0,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [
+          {
+            "filePath": "a.ts",
+            "specifier": "named:missing",
+            "reason": "export_not_found"
+          },
+          {
+            "filePath": "b.ts",
+            "specifier": "named:missing",
+            "reason": "export_not_found"
+          }
+        ],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [
+          "a.ts:named:missing>b.ts:named:missing>a.ts:named:missing"
+        ],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "external",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[default]--> external:react",
+        "symbol:app.ts#main:function --REFERENCES[value]--> external:react"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[default]--> external:react",
+        "symbol:app.ts#main:function --REFERENCES[value]--> external:react"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 4541,
+        "secondLength": 4541
+      },
+      "buildReport": {
+        "filesTotal": 1,
+        "filesProcessed": 1,
+        "filesSkipped": 0,
+        "symbolsTotal": 1,
+        "edgesStage2": 2,
+        "edgesStage3Added": 3,
+        "edgesTotal": 5,
+        "importsResolved": 0,
+        "importsUnresolved": 0,
+        "externalImports": 1,
+        "reExportsProcessed": 0,
+        "crossFileCalls": 0,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "unresolved-path",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:missing]--> virtual:unresolved",
+        "symbol:app.ts#main:function --REFERENCES[call]--> virtual:unresolved"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:missing]--> virtual:unresolved",
+        "symbol:app.ts#main:function --REFERENCES[call]--> virtual:unresolved"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 4713,
+        "secondLength": 4713
+      },
+      "buildReport": {
+        "filesTotal": 1,
+        "filesProcessed": 1,
+        "filesSkipped": 0,
+        "symbolsTotal": 1,
+        "edgesStage2": 2,
+        "edgesStage3Added": 3,
+        "edgesTotal": 5,
+        "importsResolved": 0,
+        "importsUnresolved": 1,
+        "externalImports": 0,
+        "reExportsProcessed": 0,
+        "crossFileCalls": 0,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [
+          {
+            "filePath": "app.ts",
+            "specifier": "./missing",
+            "reason": "path_not_found"
+          }
+        ],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "react-components",
+      "passed": true,
+      "expectedEdges": [
+        "file:App.tsx --EXPORTS[export-named:App]--> symbol:App.tsx#App:component",
+        "file:App.tsx --IMPORTS[named:Button]--> symbol:Button.tsx#Button:component",
+        "file:Button.tsx --EXPORTS[export-named:Button]--> symbol:Button.tsx#Button:component",
+        "symbol:App.tsx#App:component --CALLS[]--> symbol:Button.tsx#Button:component",
+        "symbol:App.tsx#App:component --REFERENCES[jsx]--> symbol:Button.tsx#Button:component"
+      ],
+      "actualEdges": [
+        "file:App.tsx --EXPORTS[export-named:App]--> symbol:App.tsx#App:component",
+        "file:App.tsx --IMPORTS[named:Button]--> symbol:Button.tsx#Button:component",
+        "file:Button.tsx --EXPORTS[export-named:Button]--> symbol:Button.tsx#Button:component",
+        "symbol:App.tsx#App:component --CALLS[]--> symbol:Button.tsx#Button:component",
+        "symbol:App.tsx#App:component --REFERENCES[jsx]--> symbol:Button.tsx#Button:component"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 7348,
+        "secondLength": 7348
+      },
+      "buildReport": {
+        "filesTotal": 2,
+        "filesProcessed": 2,
+        "filesSkipped": 0,
+        "symbolsTotal": 2,
+        "edgesStage2": 3,
+        "edgesStage3Added": 5,
+        "edgesTotal": 8,
+        "importsResolved": 1,
+        "importsUnresolved": 0,
+        "externalImports": 0,
+        "reExportsProcessed": 0,
+        "crossFileCalls": 1,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "namespace",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[namespace:Auth]--> module:auth.ts",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[namespace:Auth]--> module:auth.ts",
+        "file:auth.ts --EXPORTS[export-named:login]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:auth.ts#login:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:auth.ts#login:function"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 7281,
+        "secondLength": 7281
+      },
+      "buildReport": {
+        "filesTotal": 2,
+        "filesProcessed": 2,
+        "filesSkipped": 0,
+        "symbolsTotal": 2,
+        "edgesStage2": 3,
+        "edgesStage3Added": 5,
+        "edgesTotal": 8,
+        "importsResolved": 1,
+        "importsUnresolved": 0,
+        "externalImports": 0,
+        "reExportsProcessed": 0,
+        "crossFileCalls": 1,
+        "references": 1
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    },
+    {
+      "fixture": "mixed-stage2",
+      "passed": true,
+      "expectedEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:helper]--> symbol:util.ts#helper:function",
+        "file:util.ts --EXPORTS[export-named:helper]--> symbol:util.ts#helper:function",
+        "symbol:app.ts#local:function --CALLS[]--> symbol:util.ts#helper:function",
+        "symbol:app.ts#local:function --REFERENCES[call]--> symbol:util.ts#helper:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:app.ts#local:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:util.ts#helper:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:util.ts#helper:function"
+      ],
+      "actualEdges": [
+        "file:app.ts --EXPORTS[export-named:main]--> symbol:app.ts#main:function",
+        "file:app.ts --IMPORTS[named:helper]--> symbol:util.ts#helper:function",
+        "file:util.ts --EXPORTS[export-named:helper]--> symbol:util.ts#helper:function",
+        "symbol:app.ts#local:function --CALLS[]--> symbol:util.ts#helper:function",
+        "symbol:app.ts#local:function --REFERENCES[call]--> symbol:util.ts#helper:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:app.ts#local:function",
+        "symbol:app.ts#main:function --CALLS[]--> symbol:util.ts#helper:function",
+        "symbol:app.ts#main:function --REFERENCES[call]--> symbol:util.ts#helper:function"
+      ],
+      "mismatches": {
+        "missing": [],
+        "unexpected": []
+      },
+      "determinism": {
+        "runTwiceByteIdentical": true,
+        "firstLength": 9627,
+        "secondLength": 9627
+      },
+      "buildReport": {
+        "filesTotal": 2,
+        "filesProcessed": 2,
+        "filesSkipped": 0,
+        "symbolsTotal": 3,
+        "edgesStage2": 5,
+        "edgesStage3Added": 7,
+        "edgesTotal": 12,
+        "importsResolved": 1,
+        "importsUnresolved": 0,
+        "externalImports": 0,
+        "reExportsProcessed": 0,
+        "crossFileCalls": 2,
+        "references": 2
+      },
+      "diagnostics": {
+        "unresolvedExports": [],
+        "unresolvedPaths": [],
+        "unresolvedAliases": [],
+        "circularChains": [],
+        "surfaceParseFallback": [],
+        "orphanExports": []
+      }
+    }
+  ]
+}

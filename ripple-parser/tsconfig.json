@@ -9,5 +9,5 @@
     "ignoreDeprecations": "6.0",
     "types": ["node"]
   },
-  "include": ["parser.ts", "src/**/*"]
+  "include": ["parser.ts", "src/**/*", "../adapters/**/*"]
 }

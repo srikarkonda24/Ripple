@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "verify:stage3": "ts-node fixtures/stage3/runVerification.ts",
+    "verify:stage4": "ts-node fixtures/stage4/runVerification.ts",
+    "verify:stage4:parity": "ts-node fixtures/stage4/runVerification.ts -- --parity",
+    "validate:stage3-real": "ts-node fixtures/stage3-real/runRealWorldValidation.ts"
   },
   "keywords": [],
   "author": "",
