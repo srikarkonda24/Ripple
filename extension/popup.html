@@ -1,0 +1,234 @@
+<!-- Popup UI for Ripple Team Sync — select ChatGPT tabs, collect responses, and broadcast. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ripple Team Sync</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #0a0a0a;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 13px;
+        line-height: 1.5;
+        min-width: 360px;
+        max-width: 420px;
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+      }
+
+      .section-label {
+        color: #888888;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+
+      .tab-list {
+        background-color: #141414;
+        border: 1px solid #222222;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        max-height: 180px;
+        overflow-y: auto;
+        padding: 8px;
+      }
+
+      .tab-item {
+        align-items: center;
+        display: flex;
+        gap: 8px;
+        padding: 6px 4px;
+      }
+
+      .tab-item label {
+        cursor: pointer;
+        flex: 1;
+        word-break: break-word;
+      }
+
+      .tab-item input[type='checkbox'] {
+        accent-color: #ffffff;
+        cursor: pointer;
+        flex-shrink: 0;
+        height: 16px;
+        width: 16px;
+      }
+
+      .empty-tabs {
+        color: #666666;
+        font-size: 12px;
+        padding: 12px 4px;
+        text-align: center;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      button {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        color: #0a0a0a;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 14px;
+      }
+
+      button:hover {
+        background-color: #e8e8e8;
+      }
+
+      button:active {
+        background-color: #d0d0d0;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      button.secondary {
+        background-color: #1a1a1a;
+        border: 1px solid #333333;
+        color: #ffffff;
+      }
+
+      button.secondary:hover {
+        background-color: #222222;
+      }
+
+      button.small {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
+      .divider {
+        background-color: #222222;
+        height: 1px;
+        margin: 16px 0;
+      }
+
+      #combined-prompt {
+        background-color: #141414;
+        border: 1px solid #222222;
+        border-radius: 8px;
+        color: #ffffff;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 11px;
+        height: 200px;
+        line-height: 1.5;
+        margin-bottom: 16px;
+        padding: 10px;
+        resize: vertical;
+        width: 100%;
+      }
+
+      #combined-prompt:focus {
+        border-color: #444444;
+        outline: none;
+      }
+
+      .auto-send-row {
+        align-items: center;
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .auto-send-row input[type='checkbox'] {
+        accent-color: #ffffff;
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+      }
+
+      .auto-send-row label {
+        cursor: pointer;
+      }
+
+      #broadcast-button {
+        width: 100%;
+      }
+
+      .status {
+        color: #888888;
+        font-size: 11px;
+        margin-top: 10px;
+        min-height: 16px;
+        text-align: center;
+      }
+
+      .status.error {
+        color: #ff6b6b;
+      }
+
+      .status.success {
+        color: #a8d5a2;
+      }
+
+      .status.warning {
+        color: #f0c674;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ripple Team Sync</h1>
+
+    <div class="section-label">Detected ChatGPT Tabs</div>
+    <div class="tab-list" id="tab-list">
+      <div class="empty-tabs" id="empty-tabs">Scanning for ChatGPT tabs…</div>
+    </div>
+
+    <div class="button-row">
+      <button type="button" id="select-all-button" class="secondary small">
+        Select All
+      </button>
+      <button type="button" id="collect-button" class="small">
+        Collect Latest Responses
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Combined Prompt</div>
+    <textarea
+      id="combined-prompt"
+      placeholder="Collected responses appear here. Edit before broadcasting."
+    ></textarea>
+
+    <div class="divider"></div>
+
+    <div class="auto-send-row">
+      <input type="checkbox" id="auto-send-checkbox" checked />
+      <label for="auto-send-checkbox">Auto Send</label>
+    </div>
+
+    <button type="button" id="broadcast-button">Broadcast</button>
+
+    <p class="status" id="status"></p>
+
+    <script src="storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
