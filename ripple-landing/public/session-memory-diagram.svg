@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" fill="none" role="img" aria-labelledby="session-memory-title session-memory-desc">
+  <title id="session-memory-title">Session memory: context lost vs persistent memory</title>
+  <desc id="session-memory-desc">Without Ripple, each session resets. With Ripple, sessions stay connected through project memory.</desc>
+
+  <text x="180" y="22" text-anchor="middle" fill="#737373" font-family="system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="0.06em">WITHOUT RIPPLE</text>
+
+  <rect x="20" y="44" width="76" height="40" rx="8" fill="#1a1a1a" stroke="#262626" stroke-width="1"/>
+  <text x="58" y="68" text-anchor="middle" fill="#f5f5f5" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Session 1</text>
+
+  <line x1="98" y1="64" x2="112" y2="64" stroke="#404040" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="124" cy="64" r="10" fill="#141414" stroke="#f87171" stroke-width="1.5"/>
+  <path d="M120 64 L128 64 M124 60 L124 68" stroke="#f87171" stroke-width="1.5" stroke-linecap="round"/>
+
+  <rect x="136" y="44" width="76" height="40" rx="8" fill="#1a1a1a" stroke="#262626" stroke-width="1"/>
+  <text x="174" y="68" text-anchor="middle" fill="#f5f5f5" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Session 2</text>
+
+  <line x1="214" y1="64" x2="228" y2="64" stroke="#404040" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="240" cy="64" r="10" fill="#141414" stroke="#f87171" stroke-width="1.5"/>
+  <path d="M236 64 L244 64 M240 60 L240 68" stroke="#f87171" stroke-width="1.5" stroke-linecap="round"/>
+
+  <rect x="252" y="44" width="76" height="40" rx="8" fill="#1a1a1a" stroke="#262626" stroke-width="1"/>
+  <text x="290" y="68" text-anchor="middle" fill="#f5f5f5" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Session 3</text>
+
+  <text x="180" y="108" text-anchor="middle" fill="#f87171" font-family="system-ui, sans-serif" font-size="11">Context lost each time</text>
+
+  <line x1="360" y1="12" x2="360" y2="208" stroke="#262626" stroke-width="1"/>
+
+  <text x="540" y="22" text-anchor="middle" fill="#737373" font-family="system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="0.06em">WITH RIPPLE</text>
+
+  <rect x="380" y="44" width="76" height="40" rx="8" fill="#1a1a1a" stroke="#262626" stroke-width="1"/>
+  <text x="418" y="68" text-anchor="middle" fill="#f5f5f5" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Session 1</text>
+
+  <line x1="458" y1="64" x2="472" y2="64" stroke="#c084fc" stroke-width="1.5"/>
+  <path d="M472 60 L478 64 L472 68" fill="#c084fc"/>
+
+  <rect x="486" y="44" width="76" height="40" rx="8" fill="#1a1a1a" stroke="#262626" stroke-width="1"/>
+  <text x="524" y="68" text-anchor="middle" fill="#f5f5f5" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Session 2</text>
+
+  <line x1="564" y1="64" x2="578" y2="64" stroke="#c084fc" stroke-width="1.5"/>
+  <path d="M578 60 L584 64 L578 68" fill="#c084fc"/>
+
+  <rect x="592" y="44" width="76" height="40" rx="8" fill="#1a1a1a" stroke="#262626" stroke-width="1"/>
+  <text x="630" y="68" text-anchor="middle" fill="#f5f5f5" font-family="system-ui, sans-serif" font-size="12" font-weight="500">Session 3</text>
+
+  <line x1="418" y1="86" x2="418" y2="118" stroke="#c084fc" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="524" y1="86" x2="524" y2="118" stroke="#c084fc" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="630" y1="86" x2="630" y2="118" stroke="#c084fc" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <rect x="380" y="118" width="288" height="52" rx="10" fill="#241a33" stroke="#6b4f99" stroke-width="1"/>
+  <text x="524" y="142" text-anchor="middle" fill="#c084fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Ripple Project Memory</text>
+  <text x="524" y="160" text-anchor="middle" fill="#a3a3a3" font-family="system-ui, sans-serif" font-size="11">Decisions, tried and rejected, open questions</text>
+
+  <text x="524" y="198" text-anchor="middle" fill="#4ade80" font-family="system-ui, sans-serif" font-size="11">Context carries forward</text>
+</svg>

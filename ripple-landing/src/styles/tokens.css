@@ -1,0 +1,45 @@
+/* Design tokens for the Ripple landing page dark developer-tool theme. */
+:root {
+  --color-bg: #050505;
+  --color-bg-elevated: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-raised: #171717;
+  --color-border: #262626;
+  --color-border-hover: #3f3f3f;
+  --color-text: #a1a1a1;
+  --color-text-heading: #fafafa;
+  --color-text-muted: #737373;
+  --color-accent: #5b8cff;
+  --color-accent-hover: #7aa3ff;
+  --color-accent-bg: rgba(91, 140, 255, 0.1);
+  --color-accent-border: rgba(91, 140, 255, 0.35);
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-risk-high: #f87171;
+
+  --font-sans: var(--font-body), 'Segoe UI', sans-serif;
+  --font-display: var(--font-display-family), var(--font-body), sans-serif;
+  --font-mono: var(--font-mono-family), ui-monospace, Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  --max-width-content: 1120px;
+  --max-width-text: 640px;
+
+  --nav-height: 64px;
+  --transition-base: 0.2s ease;
+  --transition-animate: 0.6s ease;
+}
